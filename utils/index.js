@@ -79,7 +79,7 @@ To get started:
     )}${lintMsg(data)}yarn serve`
   )}
   
-Template from Github https://github.com/pumelotea/vue-cli-template-webpack
+Template from Github https://github.com/pumelotea/vue-cli-iview-template
 `
   console.log(message)
 }
