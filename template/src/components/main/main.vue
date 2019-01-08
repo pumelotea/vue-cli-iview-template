@@ -183,6 +183,6 @@ export default {
 </script>
 <style>
   #side-menu .ivu-layout-sider-children {
-    margin-right: 0 !important;
+    margin-right: -14px !important;
   }
 </style>
