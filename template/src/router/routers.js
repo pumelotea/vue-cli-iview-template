@@ -54,7 +54,8 @@ export default [
     path: '/blank',
     name: 'blank',
     meta: {
-      hideInBread: true
+      hideInBread: false,
+      title: 'blank'
     },
     component: Main,
     children: [
