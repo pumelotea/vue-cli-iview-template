@@ -78,8 +78,15 @@ To get started:
       data
     )}${lintMsg(data)}yarn serve`
   )}
-  
-Template from Github https://github.com/pumelotea/vue-cli-iview-template
+
+        _____   _   _       ___  ___   _____   _       _____
+        |  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\
+        | |_| | | | | |    / /|   /| | | |__   | |     | | | |
+        |  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |
+        | |     | |_| |  / /       | | | |___  | |___  | |_| |
+        |_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/
+        
+Template from Github https://github.com/pumelotea/vue-cli-iview-template （version 1.0.0）
 `
   console.log(message)
 }
