@@ -76,10 +76,6 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
   ${green('|_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/')}
   
 Template from Github https://github.com/pumelotea/vue-cli-iview-template （version 1.0.0）
-    
-
-# ${yellow('vue-cli 3.x is recommended')}
-# ====================================
 
 To get started:
 
@@ -88,8 +84,7 @@ To get started:
       data
     )}${lintMsg(data)}yarn serve`
   )}
-
-
+  
 `
   console.log(message)
 }
