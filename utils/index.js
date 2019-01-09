@@ -74,8 +74,8 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
   ${green('|  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |')}
   ${green('| |     | |_| |  / /       | | | |___  | |___  | |_| |')}
   ${green('|_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/')}
-  
-Template from Github https://github.com/pumelotea/vue-cli-iview-template （version 1.0.0）
+  ${yellow('vue-cli-iview-template version: 1.0.0')}
+Template from Github https://github.com/pumelotea/vue-cli-iview-template
 
 To get started:
 
