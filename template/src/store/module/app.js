@@ -33,10 +33,16 @@ export default {
     homeRoute: {},
     local: localRead('local'),
     errorList: [],
-    hasReadErrorPage: false
+    hasReadErrorPage: false,
+    dyRouters: []
   },
   getters: {
-    menuList: (state, getters, rootState) => getMenuByRouter(routers, rootState.user.access),
+    menuList: (state, getters, rootState) => {
+      let list = getMenuByRouter(routers, rootState.user.access)
+      let dyList = getMenuByRouter(state.dyRouters, rootState.user.access)
+      list.push(...dyList)
+      return list
+    },
     errorCount: state => state.errorList.length
   },
   mutations: {

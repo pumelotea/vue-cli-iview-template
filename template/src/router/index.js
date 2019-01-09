@@ -15,10 +15,23 @@ const router = new Router({
 const LOGIN_PAGE_NAME = 'login'
 
 const turnTo = (to, access, next) => {
-  if (canTurnTo(to.name, access, routes)) next() // 有权限，可访问
+  if (canTurnTo(to.name, access, routes)) next() // 有权限，可访问,静态路由
+  else if (canTurnTo(to.name, access, store.state.app.dyRouters)) next() // 有权限，可访问,动态路由
   else next({ replace: true, name: 'error_401' }) // 无权限，重定向到401页面
 }
 
+/**
+ * 动态新增一个路由
+ * 动态路由由vuex管理
+ * @param route
+ */
+export const addDyRoute = (route) => {
+  store.state.app.dyRouters.push(route)
+  router.addRoutes([route])
+}
+
+// 扩展到路由对象上
+router['addDyRoute'] = addDyRoute
 router.beforeEach((to, from, next) => {
   iView.LoadingBar.start()
   const token = getToken()
