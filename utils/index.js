@@ -68,6 +68,16 @@ exports.runLintFix = function runLintFix(cwd, data, color) {
 exports.printMessage = function printMessage(data, { green, yellow }) {
   const message = `
 # ${green('Project initialization finished!')}
+  ${green('_____   _   _       ___  ___   _____   _       _____')}
+  ${green('|  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\')}
+  ${green('| |_| | | | | |    / /|   /| | | |__   | |     | | | |')}
+  ${green('|  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |')}
+  ${green('| |     | |_| |  / /       | | | |___  | |___  | |_| |')}
+  ${green('|_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/')}
+  
+Template from Github https://github.com/pumelotea/vue-cli-iview-template （version 1.0.0）
+    
+
 # ${yellow('vue-cli 3.x is recommended')}
 # ====================================
 
@@ -79,14 +89,7 @@ To get started:
     )}${lintMsg(data)}yarn serve`
   )}
 
-        _____   _   _       ___  ___   _____   _       _____
-        |  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\
-        | |_| | | | | |    / /|   /| | | |__   | |     | | | |
-        |  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |
-        | |     | |_| |  / /       | | | |___  | |___  | |_| |
-        |_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/
-        
-Template from Github https://github.com/pumelotea/vue-cli-iview-template （version 1.0.0）
+
 `
   console.log(message)
 }
