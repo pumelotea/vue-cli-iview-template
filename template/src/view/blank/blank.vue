@@ -4,7 +4,7 @@
     <a @click="add">添加一个路由</a>
     <div>
       <pre>
-        {{route}}
+        \{{route}}
       </pre>
     </div>
   </div>
