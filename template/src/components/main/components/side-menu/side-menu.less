@@ -1,5 +1,13 @@
 .side-menu-wrapper{
   user-select: none;
+  height: 100%;
+  .menu-uncollapsed{
+    height: 100%;
+    overflow: auto;
+  }
+  .menu-uncollapsed::-webkit-scrollbar{
+    width: 0px !important;
+  }
   .menu-collapsed{
     padding-top: 10px;
 
