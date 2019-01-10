@@ -35,7 +35,7 @@ module.exports = {
         },
         autoInitGit:{
             type: 'string',
-            message: 'Auto init git',
+            message: 'Auto init git repo',
             required: true,
             default: "yes"
         },
