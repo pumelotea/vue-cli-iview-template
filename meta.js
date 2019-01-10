@@ -58,6 +58,7 @@ module.exports = {
         const yellow = chalk.yellow
         const myc = chalk.hex('#0dfdd3')
         let cwd = './'+data.destDirName
+        chalk['myc'] = myc
         printMessage(data, chalk)
         sortDependencies(data)
         if (data.autoRun === 'yes'){

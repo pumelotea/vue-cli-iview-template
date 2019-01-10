@@ -67,15 +67,15 @@ exports.autoRun = function autoRun(color, cwd,data) {
  * Prints the final message with instructions of necessary next steps.
  * @param {Object} data Data from questionnaire.
  */
-exports.printMessage = function printMessage(data, {green, yellow}) {
+exports.printMessage = function printMessage(data, {green, yellow,myc}) {
     const message = `
-  ${green(' _____   _   _       ___  ___   _____   _       _____')}
-  ${green('|  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\')}
-  ${green('| |_| | | | | |    / /|   /| | | |__   | |     | | | |')}
-  ${green('|  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |')}
-  ${green('| |     | |_| |  / /       | | | |___  | |___  | |_| |')}
-  ${green('|_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/')}
-  ${yellow('vue-cli-iview-template version: 1.0.0')}
+  ${myc(' _____   _   _       ___  ___   _____   _       _____')}
+  ${myc('|  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\')}
+  ${myc('| |_| | | | | |    / /|   /| | | |__   | |     | | | |')}
+  ${myc('|  ___/ | | | |   / / |__/ | | |  __|  | |     | | | |')}
+  ${myc('| |     | |_| |  / /       | | | |___  | |___  | |_| |')}
+  ${myc('|_|     \\\\_____//_/        |_| |_____| |_____| \\\\____/')}
+  ${yellow('vue-cli-iview-template version: ')}${green('1.0.0')}
   ${yellow('https://github.com/pumelotea/vue-cli-iview-template')}
   
 
