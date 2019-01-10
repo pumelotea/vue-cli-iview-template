@@ -35,7 +35,6 @@ module.exports = {
     },
     complete: function(data, { chalk }) {
         const green = chalk.green
-        const blue = chalk.blue
         sortDependencies(data, green)
         installDependencies()
         printMessage(data, chalk)
