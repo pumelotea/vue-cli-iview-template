@@ -59,10 +59,10 @@ module.exports = {
         let cwd = './'+data.destDirName
         printMessage(data, chalk)
         sortDependencies(data)
-        initGit(yellow,cwd).then(()=>{
-           return installDependencies(yellow,cwd)
+        initGit(yellow,cwd,data).then(()=>{
+           return installDependencies(yellow,cwd,data)
         }).then(()=>{
-           return autoRun(yellow,cwd)
+           return autoRun(yellow,cwd,data)
         })
 
     },
