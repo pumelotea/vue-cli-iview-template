@@ -57,13 +57,14 @@ module.exports = {
         const green = chalk.green
         const yellow = chalk.yellow
         let cwd = './'+data.destDirName
+        printMessage(data, chalk)
         sortDependencies(data)
+
+
         initGit(yellow,cwd).then(()=>{
            return installDependencies(yellow,cwd)
         }).then(()=>{
            return autoRun(yellow,cwd)
-        }).then(()=>{
-            printMessage(data, chalk)
         })
 
     },
