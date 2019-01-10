@@ -2,6 +2,8 @@ const path = require('path')
 const fs = require('fs')
 const spawn = require('child_process').spawn
 
+const lintStyles = ['standard', 'airbnb']
+
 /**
  * Sorts dependencies in package.json alphabetically.
  * They are unsorted because they were grouped for the handlebars helpers
@@ -16,6 +18,47 @@ exports.sortDependencies = function sortDependencies(data) {
   packageJson.devDependencies = sortObject(packageJson.devDependencies)
   packageJson.dependencies = sortObject(packageJson.dependencies)
   fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2) + '\n')
+}
+
+/**
+ * Runs `yarn install` in the project directory
+ * @param {string} cwd Path of the created project directory
+ * @param {object} data Data from questionnaire
+ */
+exports.installDependencies = function installDependencies(
+  cwd,
+  executable = 'yarn',
+  color
+) {
+  console.log(`\n\n# ${color('Installing project dependencies ...')}`)
+  console.log('# ========================\n')
+  return runCommand(executable, ['install'], {
+    cwd,
+  })
+}
+
+/**
+ * Runs `npm run lint -- --fix` in the project directory
+ * @param {string} cwd Path of the created project directory
+ * @param {object} data Data from questionnaire
+ */
+exports.runLintFix = function runLintFix(cwd, data, color) {
+  if (data.lint && lintStyles.indexOf(data.lintConfig) !== -1) {
+    console.log(
+      `\n\n${color(
+        'Running eslint --fix to comply with chosen preset rules...'
+      )}`
+    )
+    console.log('# ========================\n')
+    const args =
+      data.autoInstall === 'npm'
+        ? ['run', 'lint', '--', '--fix']
+        : ['run', 'lint', '--fix']
+    return runCommand(data.autoInstall, args, {
+      cwd,
+    })
+  }
+  return Promise.resolve()
 }
 
 /**
@@ -39,11 +82,22 @@ To get started:
   ${yellow(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
-    )}${lintMsg(data)}yarn serve`
+    )}yarn serve`
   )}
   
 `
   console.log(message)
+}
+
+
+
+/**
+ * If the user will have to run `npm install` or `yarn` themselves, it returns a string
+ * containing the instruction for this step.
+ * @param {Object} data Data from the questionnaire
+ */
+function installMsg(data) {
+  return !data.autoInstall ? 'yarn install\n  ' : ''
 }
 
 /**
