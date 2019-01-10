@@ -97,7 +97,7 @@ To get started:
  * @param {Object} data Data from the questionnaire
  */
 function installMsg(data) {
-  return !data.autoInstall ? 'yarn install\n  ' : ''
+  return 'yarn install\n'
 }
 
 /**
