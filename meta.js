@@ -5,7 +5,8 @@ const {
     sortDependencies,
     printMessage,
     initGit,
-    installDependencies
+    installDependencies,
+    autoRun
 } = require('./utils')
 
 module.exports = {
@@ -43,15 +44,27 @@ module.exports = {
             message: 'auto install dependencies',
             required: true,
             default: "yes"
+        },
+        autoRun:{
+            type: 'string',
+            message: 'auto run',
+            required: true,
+            default: "yes"
         }
 
     },
     complete: function(data, { chalk }) {
         const green = chalk.green
-        sortDependencies(data, green)
-        // installDependencies(green,'yarn','./'+data.destDirName)
-        initGit(data,'./'+data.destDirName).then(()=>{
+        const yellow = chalk.yellow
+        let cwd = './'+data.destDirName
+        sortDependencies(data)
+        initGit(yellow,cwd).then(()=>{
+            installDependencies(yellow,cwd)
+        }).then(()=>{
+            autoRun(yellow,cwd)
+        }).then(()=>{
             printMessage(data, chalk)
         })
+
     },
 }

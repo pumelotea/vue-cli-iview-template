@@ -10,14 +10,14 @@ const lintStyles = ['standard', 'airbnb']
  * @param {object} data Data from questionnaire
  */
 exports.sortDependencies = function sortDependencies(data) {
-  const packageJsonFile = path.join(
-    data.inPlace ? '' : data.destDirName,
-    'package.json'
-  )
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonFile))
-  packageJson.devDependencies = sortObject(packageJson.devDependencies)
-  packageJson.dependencies = sortObject(packageJson.dependencies)
-  fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2) + '\n')
+    const packageJsonFile = path.join(
+        data.inPlace ? '' : data.destDirName,
+        'package.json'
+    )
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonFile))
+    packageJson.devDependencies = sortObject(packageJson.devDependencies)
+    packageJson.dependencies = sortObject(packageJson.dependencies)
+    fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2) + '\n')
 }
 
 /**
@@ -27,29 +27,33 @@ exports.sortDependencies = function sortDependencies(data) {
  */
 exports.installDependencies = function installDependencies(
     color,
-    executable = 'yarn',
     cwd
 ) {
-  console.log(`\n\n# ${color('Installing project dependencies ...')}`)
-  return runCommand(executable, ['install'], {
-    cwd,
-  })
-}
-
-exports.initGit = function initGit(data,cwd){
-    return runCommand('git', ['init'], {
+    console.log(`\n\n# ${color('Installing project dependencies ...')}`)
+    return runCommand('yarn', ['install'], {
         cwd,
     })
 }
 
 
+exports.initGit = function initGit(color, cwd) {
+    return runCommand('git', ['init'], {
+        cwd,
+    })
+}
+
+exports.autoRun = function autoRun(color, cwd) {
+    return runCommand('yarn', ['serve'], {
+        cwd,
+    })
+}
 
 /**
  * Prints the final message with instructions of necessary next steps.
  * @param {Object} data Data from questionnaire.
  */
-exports.printMessage = function printMessage(data, { green, yellow }) {
-  const message = `
+exports.printMessage = function printMessage(data, {green, yellow}) {
+    const message = `
   ${green(' _____   _   _       ___  ___   _____   _       _____')}
   ${green('|  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\')}
   ${green('| |_| | | | | |    / /|   /| | | |__   | |     | | | |')}
@@ -60,18 +64,17 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
   ${yellow('https://github.com/pumelotea/vue-cli-iview-template')}
   
 
-To get started:
+  To get started（Manually）:
 
   ${yellow(
-    `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
-      data
-    )}  yarn serve`
-  )}
+        `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
+            data
+        )}  yarn serve`
+    )}
   
 `
-  console.log(message)
+    console.log(message)
 }
-
 
 
 /**
@@ -80,7 +83,7 @@ To get started:
  * @param {Object} data Data from the questionnaire
  */
 function installMsg(data) {
-  return 'yarn install\n'
+    return 'yarn install\n'
 }
 
 /**
@@ -92,33 +95,33 @@ function installMsg(data) {
  * @param {object} options
  */
 function runCommand(cmd, args, options) {
-  return new Promise((resolve, reject) => {
-    const spwan = spawn(
-      cmd,
-      args,
-      Object.assign(
-        {
-          cwd: process.cwd(),
-          stdio: 'inherit',
-          shell: true,
-        },
-        options
-      )
-    )
+    return new Promise((resolve, reject) => {
+        const spwan = spawn(
+            cmd,
+            args,
+            Object.assign(
+                {
+                    cwd: process.cwd(),
+                    stdio: 'inherit',
+                    shell: true,
+                },
+                options
+            )
+        )
 
-    spwan.on('exit', () => {
-      resolve()
+        spwan.on('exit', () => {
+            resolve()
+        })
     })
-  })
 }
 
 function sortObject(object) {
-  // Based on https://github.com/yarnpkg/yarn/blob/v1.3.2/src/config.js#L79-L85
-  const sortedObject = {}
-  Object.keys(object)
-    .sort()
-    .forEach(item => {
-      sortedObject[item] = object[item]
-    })
-  return sortedObject
+    // Based on https://github.com/yarnpkg/yarn/blob/v1.3.2/src/config.js#L79-L85
+    const sortedObject = {}
+    Object.keys(object)
+        .sort()
+        .forEach(item => {
+            sortedObject[item] = object[item]
+        })
+    return sortedObject
 }
