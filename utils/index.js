@@ -51,7 +51,6 @@ exports.initGit = function initGit(data,cwd){
  */
 exports.printMessage = function printMessage(data, { green, yellow }) {
   const message = `
-# ${green('Project initialization finished!')}
   ${green(' _____   _   _       ___  ___   _____   _       _____')}
   ${green('|  _  \\\\| | | |     /   |/   | | ____| | |     /  _  \\\\')}
   ${green('| |_| | | | | |    / /|   /| | | |__   | |     | | | |')}

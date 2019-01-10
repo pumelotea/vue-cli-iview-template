@@ -36,8 +36,10 @@ module.exports = {
     complete: function(data, { chalk }) {
         const green = chalk.green
         sortDependencies(data, green)
-        installDependencies(green,'yarn','./'+data.destDirName)
+        // installDependencies(green,'yarn','./'+data.destDirName)
+        initGit(data).then(()=>{
+            console.log(11111)
+        })
         printMessage(data, chalk)
-        initGit(data)
     },
 }
