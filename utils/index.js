@@ -26,9 +26,9 @@ exports.sortDependencies = function sortDependencies(data) {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = function installDependencies(
-  cwd,
-  executable = 'yarn',
-  color
+    color,
+    executable = 'yarn',
+    cwd
 ) {
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
   console.log('# ========================\n')
