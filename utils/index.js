@@ -25,24 +25,39 @@ exports.sortDependencies = function sortDependencies(data) {
  * @param {string} cwd Path of the created project directory
  * @param {object} data Data from questionnaire
  */
-exports.installDependencies = function installDependencies(
-    color,
-    cwd
-) {
-    console.log(`\n\n  ${color('Installing project dependencies ...')}`)
+exports.installDependencies = function installDependencies(color, cwd,data) {
+    if (data.autoInstall !=='yes'){
+        return new Promise((resolve, reject) => {
+
+        })
+    }
+    console.log(`\n\n=> ${color('Installing project dependencies ...')}`)
     return runCommand('yarn', ['install'], {
         cwd,
     })
 }
 
 
-exports.initGit = function initGit(color, cwd) {
+exports.initGit = function initGit(color, cwd,data) {
+    if (data.autoInitGit !=='yes'){
+        return new Promise((resolve, reject) => {
+
+        })
+    }
+    console.log(`\n\n=> ${color('init git repo ...')}`)
     return runCommand('git', ['init'], {
         cwd,
     })
+
 }
 
-exports.autoRun = function autoRun(color, cwd) {
+exports.autoRun = function autoRun(color, cwd,data) {
+    if (data.autoRun !=='yes'){
+        return new Promise((resolve, reject) => {
+
+        })
+    }
+    console.log(`\n\n=> ${color('Starting run ...')}`)
     return runCommand('yarn', ['serve'], {
         cwd,
     })
