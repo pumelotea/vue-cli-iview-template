@@ -31,14 +31,13 @@ exports.installDependencies = function installDependencies(
     cwd
 ) {
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
-  console.log('# ========================\n')
   return runCommand(executable, ['install'], {
     cwd,
   })
 }
 
 exports.initGit = function initGit(data,cwd){
-    return runCommand('git', ['init ./'+data.destDirName], {
+    return runCommand('git', ['init'], {
         cwd,
     })
 }

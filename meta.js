@@ -31,13 +31,26 @@ module.exports = {
             type: 'string',
             message: 'Project version',
             default: "0.0.1"
+        },
+        autoInitGit:{
+            type: 'string',
+            message: 'auto init git',
+            required: true,
+            default: "yes"
+        },
+        autoInstall:{
+            type: 'string',
+            message: 'auto install dependencies',
+            required: true,
+            default: "yes"
         }
+
     },
     complete: function(data, { chalk }) {
         const green = chalk.green
         sortDependencies(data, green)
         // installDependencies(green,'yarn','./'+data.destDirName)
-        initGit(data).then(()=>{
+        initGit(data,'./'+data.destDirName).then(()=>{
             printMessage(data, chalk)
         })
     },
