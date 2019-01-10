@@ -31,7 +31,7 @@ exports.installDependencies = function installDependencies(color, cwd,data) {
             resolve()
         })
     }
-    console.log(`\n\n=>${color('Installing project dependencies ...')}`)
+    console.log(`\n\n=>${color('installing project dependencies ...')}`)
     return runCommand('yarn', ['install'], {
         cwd,
     })
@@ -57,7 +57,7 @@ exports.autoRun = function autoRun(color, cwd,data) {
             resolve()
         })
     }
-    console.log(`\n\n=>${color('Starting run ...')}`)
+    console.log(`\n\n=>${color('starting run ...')}`)
     return runCommand('yarn', ['serve'], {
         cwd,
     })
