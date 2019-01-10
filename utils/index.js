@@ -29,7 +29,7 @@ exports.installDependencies = function installDependencies(
     color,
     cwd
 ) {
-    console.log(`\n\n# ${color('Installing project dependencies ...')}`)
+    console.log(`\n\n  ${color('Installing project dependencies ...')}`)
     return runCommand('yarn', ['install'], {
         cwd,
     })

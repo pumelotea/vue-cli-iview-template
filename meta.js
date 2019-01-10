@@ -59,9 +59,9 @@ module.exports = {
         let cwd = './'+data.destDirName
         sortDependencies(data)
         initGit(yellow,cwd).then(()=>{
-            installDependencies(yellow,cwd)
+           return installDependencies(yellow,cwd)
         }).then(()=>{
-            autoRun(yellow,cwd)
+           return autoRun(yellow,cwd)
         }).then(()=>{
             printMessage(data, chalk)
         })
