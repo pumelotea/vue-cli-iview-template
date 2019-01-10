@@ -35,19 +35,19 @@ module.exports = {
         },
         autoInitGit:{
             type: 'string',
-            message: 'auto init git',
+            message: 'Auto init git',
             required: true,
             default: "yes"
         },
         autoInstall:{
             type: 'string',
-            message: 'auto install dependencies',
+            message: 'Auto install dependencies',
             required: true,
             default: "yes"
         },
         autoRun:{
             type: 'string',
-            message: 'auto run',
+            message: 'Auto run',
             required: true,
             default: "yes"
         }
