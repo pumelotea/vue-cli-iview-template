@@ -38,11 +38,11 @@ exports.installDependencies = function installDependencies(
 }
 
 exports.initGit = function initGit(data,cwd){
-    console.log('init git success!\n')
     return runCommand('git', ['init ./'+data.destDirName], {
         cwd,
     })
 }
+
 
 
 /**
