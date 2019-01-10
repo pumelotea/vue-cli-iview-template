@@ -28,10 +28,10 @@ exports.sortDependencies = function sortDependencies(data) {
 exports.installDependencies = function installDependencies(color, cwd,data) {
     if (data.autoInstall !=='yes'){
         return new Promise((resolve, reject) => {
-
+            resolve()
         })
     }
-    console.log(`\n\n=> ${color('Installing project dependencies ...')}`)
+    console.log(`\n\n=>${color('Installing project dependencies ...')}`)
     return runCommand('yarn', ['install'], {
         cwd,
     })
@@ -41,10 +41,10 @@ exports.installDependencies = function installDependencies(color, cwd,data) {
 exports.initGit = function initGit(color, cwd,data) {
     if (data.autoInitGit !=='yes'){
         return new Promise((resolve, reject) => {
-
+            resolve()
         })
     }
-    console.log(`\n\n=> ${color('init git repo ...')}`)
+    console.log(`\n\n=>${color('init git repo ...')}`)
     return runCommand('git', ['init'], {
         cwd,
     })
@@ -54,10 +54,10 @@ exports.initGit = function initGit(color, cwd,data) {
 exports.autoRun = function autoRun(color, cwd,data) {
     if (data.autoRun !=='yes'){
         return new Promise((resolve, reject) => {
-
+            resolve()
         })
     }
-    console.log(`\n\n=> ${color('Starting run ...')}`)
+    console.log(`\n\n=>${color('Starting run ...')}`)
     return runCommand('yarn', ['serve'], {
         cwd,
     })
