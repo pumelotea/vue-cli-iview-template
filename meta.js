@@ -56,16 +56,17 @@ module.exports = {
     complete: function(data, { chalk }) {
         const green = chalk.green
         const yellow = chalk.yellow
+        const myc = chalk.hex('#0dfdd3')
         let cwd = './'+data.destDirName
         printMessage(data, chalk)
         sortDependencies(data)
         if (data.autoRun === 'yes'){
             data.autoInstall = 'yes'
         }
-        initGit(yellow,cwd,data).then(()=>{
-           return installDependencies(yellow,cwd,data)
+        initGit(myc,cwd,data).then(()=>{
+           return installDependencies(myc,cwd,data)
         }).then(()=>{
-           return autoRun(yellow,cwd,data)
+           return autoRun(myc,cwd,data)
         })
 
     },
