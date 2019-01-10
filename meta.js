@@ -4,6 +4,7 @@ const fs = require('fs')
 const {
     sortDependencies,
     printMessage,
+    initGit
 } = require('./utils')
 
 module.exports = {
@@ -35,5 +36,6 @@ module.exports = {
         const green = chalk.green
         sortDependencies(data, green)
         printMessage(data, chalk)
+        initGit(data)
     },
 }
