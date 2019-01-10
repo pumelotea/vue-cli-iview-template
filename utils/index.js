@@ -82,7 +82,7 @@ To get started:
   ${yellow(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
-    )}yarn serve`
+    )}  yarn serve`
   )}
   
 `
