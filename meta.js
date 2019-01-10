@@ -38,8 +38,7 @@ module.exports = {
         sortDependencies(data, green)
         // installDependencies(green,'yarn','./'+data.destDirName)
         initGit(data).then(()=>{
-            console.log(11111)
+            printMessage(data, chalk)
         })
-        printMessage(data, chalk)
     },
 }
